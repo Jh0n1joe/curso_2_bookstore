@@ -1,9 +1,11 @@
 {% extends "_base.html" %}
 
 {% block title %}Home{% endblock title %}
+{% load static %}
 
 {% block content %}
     <h1>Esta en el home</h1>
+    <img class="bookcover" src="{% static 'images/G.png' %}" alt="G">
     {% if user.is_authenticated %}
          <p>Epale {{ user.email }} :)</p>
          <form action="{% url 'logout' %}" method="post">
@@ -13,5 +15,6 @@
     {% else %}
     <p>No estas registrado</p>
     <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
     {% endif %}
 {% endblock content %}
