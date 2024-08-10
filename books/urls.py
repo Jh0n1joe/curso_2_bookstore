@@ -1,11 +1,8 @@
 from django.urls import path
-from .views import BookListView
-from django.urls import include
+from .views import BookListView, BookDetailView
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('', include('pages.urls')),
-    path('books/', include('books.urls')),
-]
+ path('', BookListView.as_view(), name='book_list'),
+ path('<int:pk>/', BookDetailView.as_view(), name='book_detail'),
+ ]
